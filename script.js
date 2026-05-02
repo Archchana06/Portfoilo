@@ -4,22 +4,16 @@
 // ========================
 // 1. CUSTOM CURSOR (with smooth follow)
 // ========================
+// Custom Cursor
 const cursorDot = document.querySelector('.cursor-dot');
 const cursorOutline = document.querySelector('.cursor-outline');
 
 if (cursorDot && cursorOutline) {
   window.addEventListener('mousemove', (e) => {
-    const posX = e.clientX;
-    const posY = e.clientY;
-    
-    cursorDot.style.transform = `translate(${posX - 3}px, ${posY - 3}px)`;
-    
-    // Smooth outline follow with delay
-    setTimeout(() => {
-      cursorOutline.style.transform = `translate(${posX - 15}px, ${posY - 15}px)`;
-    }, 50);
+    cursorDot.style.transform = `translate(${e.clientX - 3}px, ${e.clientY - 3}px)`;
+    cursorOutline.style.transform = `translate(${e.clientX - 15}px, ${e.clientY - 15}px)`;
   });
-  
+}
   // Hover effect for interactive elements
   const hoverElements = document.querySelectorAll('a, button, .btn, .project-card, .service-card, .cert-card, .achievement-card, .skill-category');
   
