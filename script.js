@@ -210,11 +210,10 @@ styleSheet.textContent = `
 document.head.appendChild(styleSheet);
 
 // ========================
-// 7. CONTACT FORM HANDLING (Formspree - actual form submission)
+// 7. CONTACT FORM HANDLING (Formspree)
 // ========================
 // Formspree handles the form submission automatically
 // The form already has action="https://formspree.io/f/mwvypapq" method="POST"
-// No additional JavaScript needed for submission
 
 // ========================
 // 8. COPY EMAIL FUNCTIONALITY
@@ -398,43 +397,7 @@ document.addEventListener('keydown', (e) => {
 });
 
 // ========================
-// 13. ACHIEVEMENT MODAL FUNCTIONALITY
-// ========================
-const achievementImages = {
-  'seusl-designathon': {
-    src: 'achievements/seusl-designathon-winner.jpg',
-    title: '🏆 1st Place Winner - SEUSL Designathon 2026'
-  },
-  'sliit-designathon': {
-    src: 'achievements/sliit-designathon-top10.jpg',
-    title: 'Top 10 - SLIIT Designathon'
-  },
-  'figma-workshop': {
-    src: 'achievements/figma-workshop-instructor.jpg',
-    title: 'Instructor - Figma Workshop'
-  },
-  'sahasak-nimavum': {
-    src: 'achievements/sahasak-nimavum-2024.jpg',
-    title: 'Participant - SAHASAK NIMAVUM 2024'
-  },
-  'english-oratory': {
-    src: 'achievements/english-oratory-3rd-place.jpg',
-    title: '🥉 3rd Place - Province Level'
-  }
-};
-
-document.querySelectorAll('.achievement-view-btn').forEach(btn => {
-  btn.addEventListener('click', (e) => {
-    e.preventDefault();
-    const achievementKey = btn.closest('a')?.getAttribute('href')?.split('=')[1];
-    if (achievementKey && achievementImages[achievementKey]) {
-      openCertModal(achievementImages[achievementKey].src, achievementImages[achievementKey].title);
-    }
-  });
-});
-
-// ========================
-// 14. RESPONSIVE HANDLING
+// 13. RESPONSIVE HANDLING
 // ========================
 const handleResponsive = () => {
   if (window.innerWidth <= 768) {
