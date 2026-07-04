@@ -4,175 +4,216 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Achievement | Archchana Vijayanathan</title>
-  <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=18">
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
     body {
-      font-family: "Inter", sans-serif;
-      background: #0a0a0a;
-      color: #ffffff;
+      font-family: var(--font-body);
+      background: var(--bg-color);
+      color: var(--text-main);
       line-height: 1.6;
-      cursor: pointer;
     }
+
     .achievement-header {
-      padding: 100px 0 50px;
+      padding: clamp(5rem, 10vw, 8rem) 0 clamp(3rem, 6vw, 4rem);
       text-align: center;
-      background: linear-gradient(135deg, #0a0a0a, #0f0f15);
-      border-bottom: 1px solid rgba(191, 75, 255, 0.2);
+      background: transparent;
+      border-bottom: 1px solid var(--border-color);
+      position: relative;
     }
+
     .achievement-header h1 {
-      font-size: 3rem;
+      font-size: clamp(2.5rem, 5vw, 4rem);
       margin-bottom: 0.5rem;
-      background: linear-gradient(135deg, #ffffff, #bf4bff);
-      background-clip: text;
+      background: linear-gradient(135deg, #ffffff, var(--accent-secondary));
       -webkit-background-clip: text;
-      color: transparent;
+      -webkit-text-fill-color: transparent;
     }
+
     .achievement-header p {
-      color: #b0b0b0;
-      margin-bottom: 1.5rem;
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+      text-transform: uppercase;
+      font-size: 0.85rem;
+      letter-spacing: 0.12em;
     }
+
     .back-home {
       display: inline-flex;
       align-items: center;
-      gap: 0.5rem;
-      background: rgba(191, 75, 255, 0.15);
-      color: #bf4bff;
-      padding: 0.7rem 1.5rem;
-      border-radius: 50px;
+      gap: 0.8rem;
+      background: rgba(255, 255, 255, 0.02);
+      color: var(--text-main);
+      padding: 0.8rem 2.2rem;
       text-decoration: none;
-      transition: all 0.3s;
-      border: 1px solid rgba(191, 75, 255, 0.3);
-      font-weight: 500;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      border: 1px solid var(--border-color);
+      border-radius: 4px;
+      font-weight: 600;
+      text-transform: uppercase;
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
     }
+
     .back-home:hover {
-      background: rgba(191, 75, 255, 0.3);
-      transform: translateY(-3px);
+      border-color: var(--accent-secondary);
+      background: rgba(255, 42, 133, 0.05);
+      color: var(--accent-secondary);
+      box-shadow: 0 4px 15px rgba(255, 42, 133, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+      transform: translateY(-2px);
     }
+
     .achievement-detail-page {
-      padding: 40px 0 80px;
-      background: #0a0a0a;
-      min-height: calc(100vh - 200px);
+      padding: clamp(3rem, 6vw, 5rem) 0;
+      background: transparent;
+      min-height: calc(100vh - 250px);
     }
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 2rem;
-    }
+
     .achievement-container {
       max-width: 1000px;
       margin: 0 auto;
-      background: #111115;
-      border-radius: 30px;
-      border: 1px solid #222;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
       overflow: hidden;
-      animation: fadeInUp 0.5s ease;
-      padding: 40px;
+      transition: var(--transition-smooth);
+      padding: clamp(2rem, 5vw, 4rem);
       text-align: center;
     }
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+
     .achievement-icon {
       font-size: 4rem;
-      color: #bf4bff;
-      margin-bottom: 1rem;
-    }
-    .achievement-title {
-      font-size: 1.8rem;
-      margin-bottom: 1rem;
-      color: #fff;
-    }
-    .achievement-description {
-      color: #b0b0b0;
+      color: var(--accent-secondary);
       margin-bottom: 1.5rem;
-      font-size: 1rem;
     }
+
+    .achievement-title {
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      margin-bottom: 1rem;
+    }
+
+    .achievement-description {
+      color: var(--text-muted);
+      margin-bottom: 1.8rem;
+      font-size: clamp(1rem, 1.5vw, 1.25rem);
+      font-weight: 300;
+      max-width: 750px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
     .achievement-date {
-      color: #bf4bff;
+      color: var(--accent-warm);
       font-size: 0.9rem;
       margin-bottom: 1rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
     }
+
     .achievement-organizer {
-      color: #888;
-      font-size: 0.85rem;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      font-weight: 300;
+    }
+
+    .achievement-date i, .achievement-organizer i {
+      color: var(--accent-secondary);
+      margin-right: 0.5rem;
     }
     
     /* Certificate Image Styles */
     .certificate-section {
-      margin-top: 2rem;
-      padding-top: 1.5rem;
-      border-top: 1px solid #333;
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border-color);
     }
+
     .certificate-title {
-      color: #bf4bff;
-      margin-bottom: 1rem;
-      font-size: 1.2rem;
+      color: var(--text-main);
+      margin-bottom: 1.5rem;
+      font-size: 1.3rem;
       text-align: left;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
     }
+
     .certificate-image {
       width: 100%;
-      border-radius: 20px;
-      border: 1px solid #333;
+      border: 1px solid var(--border-color);
       overflow: hidden;
-      background: #1a1a2e;
+      background: var(--bg-card);
       cursor: pointer;
-      margin-bottom: 1.5rem;
+      margin-bottom: 2rem;
+      transition: var(--transition-smooth);
     }
+
     .certificate-image img {
       width: 100%;
       display: block;
-      transition: transform 0.3s;
+      transition: var(--transition-smooth);
     }
+
     .certificate-image:hover img {
-      transform: scale(1.02);
+      transform: scale(1.03);
     }
     
     /* Event Gallery Styles */
     .event-gallery {
-      margin-top: 1.5rem;
+      margin-top: 2.5rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border-color);
     }
+
     .gallery-title {
-      color: #bf4bff;
-      margin-bottom: 1rem;
-      font-size: 1.2rem;
+      color: var(--text-main);
+      margin-bottom: 1.5rem;
+      font-size: 1.3rem;
       text-align: left;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
     }
+
     .additional-images {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-      margin-top: 10px;
+      gap: 25px;
+      margin-top: 15px;
     }
+
     .additional-img {
-      background: #1a1a2e;
-      border-radius: 15px;
+      background: var(--bg-card);
       overflow: hidden;
-      border: 1px solid #333;
-      transition: all 0.3s;
+      border: 1px solid var(--border-color);
+      transition: var(--transition-smooth);
       cursor: pointer;
     }
+
     .additional-img:hover {
-      transform: translateY(-5px);
-      border-color: #bf4bff;
+      transform: translateY(-8px);
+      border-color: var(--border-hover);
     }
+
     .additional-img img {
       width: 100%;
-      height: 200px;
+      height: 220px;
       object-fit: cover;
     }
+
     .additional-img p {
-      padding: 10px;
+      padding: 12px;
       text-align: center;
-      font-size: 0.8rem;
-      color: #bf4bff;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .additional-img:hover p {
+      color: var(--accent-secondary);
     }
     
     /* Lightbox Modal */
@@ -180,102 +221,128 @@
       display: none;
       position: fixed;
       z-index: 10000;
-      left: 0;
       top: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.95);
-      backdrop-filter: blur(10px);
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(5, 5, 8, 0.96);
+      backdrop-filter: blur(30px);
+      -webkit-backdrop-filter: blur(30px);
       align-items: center;
       justify-content: center;
     }
+
     .lightbox-content {
       position: relative;
-      max-width: 90%;
-      max-height: 90%;
-      margin: auto;
-      animation: zoomIn 0.3s ease;
+      max-width: 85%;
+      max-height: 85%;
     }
-    @keyframes zoomIn {
-      from { opacity: 0; transform: scale(0.9); }
-      to { opacity: 1; transform: scale(1); }
-    }
+
     .lightbox-content img {
       width: 100%;
       height: auto;
-      max-height: 85vh;
+      max-height: 80vh;
       object-fit: contain;
-      border-radius: 12px;
-      border: 2px solid #bf4bff;
-      box-shadow: 0 0 40px rgba(191, 75, 255, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.08);
     }
+
     .lightbox-close {
       position: absolute;
-      top: -40px;
+      top: -50px;
       right: 0;
-      color: #fff;
-      font-size: 35px;
-      font-weight: bold;
+      color: var(--text-main);
+      font-size: 2.2rem;
       cursor: pointer;
-      transition: color 0.3s;
+      transition: var(--transition-smooth);
     }
+
     .lightbox-close:hover {
-      color: #bf4bff;
+      color: var(--accent-secondary);
     }
+
     .lightbox-caption {
       text-align: center;
-      color: #bf4bff;
-      padding: 12px;
-      font-size: 0.9rem;
-      font-weight: 500;
+      color: var(--accent-warm);
+      margin-top: 1rem;
+      font-size: 0.95rem;
+      font-family: var(--font-header);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
     }
     
     .achievement-details-list {
       text-align: left;
-      margin-top: 2rem;
-      padding-top: 1.5rem;
-      border-top: 1px solid #333;
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border-color);
     }
+
     .achievement-details-list h3 {
-      color: #bf4bff;
-      margin-bottom: 1rem;
-      font-size: 1.2rem;
+      color: var(--text-main);
+      margin-bottom: 1.5rem;
+      font-size: 1.3rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
     }
+
     .achievement-details-list ul {
       list-style: none;
       padding-left: 0;
     }
+
     .achievement-details-list li {
-      padding: 8px 0;
-      padding-left: 25px;
+      padding: 10px 0;
+      padding-left: 28px;
       position: relative;
-      color: #ccc;
+      color: var(--text-muted);
+      font-size: 1rem;
+      font-weight: 300;
     }
+
     .achievement-details-list li::before {
-      content: "🏆";
+      content: "✦";
       position: absolute;
       left: 0;
+      color: var(--accent-secondary);
     }
+    
+    @media (max-width: 768px) {
+      .achievement-header h1 { font-size: 2rem; }
+      .achievement-container { padding: 2rem 1.5rem; }
+      .additional-images { grid-template-columns: 1fr; }
+    }
+
     .not-found {
       text-align: center;
       padding: 60px;
     }
     .not-found i {
       font-size: 4rem;
-      color: #bf4bff;
+      color: var(--accent-secondary);
       margin-bottom: 1rem;
-    }
-    
-    @media (max-width: 768px) {
-      .achievement-header h1 { font-size: 2rem; }
-      .achievement-container { padding: 25px; }
-      .achievement-title { font-size: 1.3rem; }
-      .container { padding: 0 1rem; }
-      .additional-images { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
+
+  <!-- Custom Cursor & Glow -->
+  <div class="cursor-dot"></div>
+  <div class="cursor-outline"><span class="cursor-text"></span></div>
+  <div class="cursor-glow"></div>
+
+  <!-- SVG Noise Filter Grid -->
+  <svg class="noise-svg" style="display:none;">
+    <filter id="noise">
+      <feTurbulence type="fractalNoise" baseFrequency="0.75" numOctaves="3" stitchTiles="stitch"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.05 0"/>
+    </filter>
+  </svg>
+  <div class="noise-overlay"></div>
+
+  <!-- Canvas Background -->
+  <div class="animated-bg">
+    <canvas id="canvas-bg"></canvas>
+  </div>
 
 <div class="achievement-header">
   <div class="container">
@@ -510,6 +577,10 @@
     `;
   }
 </script>
-
+  <!-- Three.js, GSAP, and Lenis -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://unpkg.com/lenis@1.1.9/dist/lenis.min.js"></script>
+  <script src="script.js?v=18"></script>
 </body>
 </html>

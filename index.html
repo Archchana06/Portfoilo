@@ -8,26 +8,45 @@
     />
     <title>Archchana Vijayanathan | UI/UX Designer</title>
 
-    <!-- Custom Favicon - AV Monogram -->
+    <!-- Custom Favicon -->
     <link
       rel="icon"
       type="image/svg+xml"
       href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='25' fill='%23111115'/%3E%3Crect width='100' height='100' rx='25' fill='none' stroke='%23bf4bff' stroke-width='2'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dy='.35em' font-size='46' font-weight='bold' font-family='Arial, sans-serif' fill='%23bf4bff'%3EAV%3C/text%3E%3C/svg%3E"
     />
-    <link rel="stylesheet" href="style.css" />
+
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Manrope:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     />
+    <link rel="stylesheet" href="style.css?v=18" />
   </head>
   <body>
-    <!-- Custom Cursor -->
+    <!-- Custom Cursor & Glow -->
     <div class="cursor-dot"></div>
-    <div class="cursor-outline"></div>
+    <div class="cursor-outline"><span class="cursor-text"></span></div>
+    <div class="cursor-glow"></div>
+
+    <!-- SVG Noise Filter Grid -->
+    <svg class="noise-svg" style="display: none">
+      <filter id="noise">
+        <feTurbulence
+          type="fractalNoise"
+          baseFrequency="0.75"
+          numOctaves="3"
+          stitchTiles="stitch"
+        />
+        <feColorMatrix
+          type="matrix"
+          values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.05 0"
+        />
+      </filter>
+    </svg>
+    <div class="noise-overlay"></div>
 
     <!-- Navigation -->
     <nav class="navbar">
@@ -48,58 +67,101 @@
 
     <!-- Hero Section -->
     <section id="home" class="hero">
-      <div class="hero-bg-image"></div>
+      <!-- Canvas Background restricted to Hero Section -->
+      <div class="animated-bg">
+        <canvas id="canvas-bg"></canvas>
+      </div>
       <div class="hero-overlay"></div>
       <div class="hero-container">
-        <div class="hero-content">
-          <div class="hero-badge glow-text">✦ AI Driven UI/UX Designer</div>
-          <h1 class="hero-title">
-            Archchana <span class="neon-text">Vijayanathan</span>
-          </h1>
-          <p class="hero-tagline">
-            Designing intuitive, impactful, and intelligent digital experiences.
-          </p>
-          <div class="hero-buttons">
-            <a href="#projects" class="btn btn-primary"
-              ><i class="fas fa-eye"></i> View Projects</a
+        <div class="hero-grid">
+          <div class="hero-content">
+            <div class="hero-badge">
+              <span class="badge-text">✦ AI Driven UI/UX Designer</span>
+              <span class="badge-pulse"></span>
+            </div>
+            <h1
+              class="hero-title spotlight-text-container"
+              id="hero-spotlight-name"
             >
-            <a href="#contact" class="btn btn-secondary"
-              ><i class="fas fa-paper-plane"></i> Contact Me</a
-            >
+              <!-- Background Outline Text -->
+              <span class="spotlight-bg-text">
+                <span class="title-line">Archchana</span>
+                <span class="title-line-2">Vijayanathan</span>
+              </span>
+              <!-- Foreground Gradient Text -->
+              <span class="spotlight-fg-text">
+                <span class="title-line">Archchana</span>
+                <span class="title-line-2">Vijayanathan</span>
+              </span>
+            </h1>
+            <p class="hero-tagline">
+              Designing intuitive, impactful, and intelligent digital
+              experiences.
+            </p>
+            <div class="hero-buttons">
+              <a href="#projects" class="btn btn-primary">
+                <span class="btn-text">View Projects</span>
+                <i class="fas fa-eye"></i>
+              </a>
+              <a href="#contact" class="btn btn-secondary">
+                <span class="btn-text">Contact Me</span>
+                <i class="fas fa-paper-plane"></i>
+              </a>
+            </div>
+          </div>
+
+          <div class="hero-visual">
+            <div class="photo-3d-card">
+              <div
+                class="photo-3d-img"
+                style="background-image: url(&quot;Archchana2.jpeg&quot;)"
+              >
+                <div class="photo-3d-glare"></div>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="hero-glow"></div>
+
+        <div class="scroll-indicator">
+          <div class="mouse"></div>
+          <div class="scroll-text">Scroll Down</div>
+        </div>
       </div>
     </section>
 
     <!-- About Section -->
     <section id="about" class="about">
       <div class="container">
-        <h2 class="section-title"><span class="neon-dot"></span> About Me</h2>
+        <h2 class="section-title">
+          <span class="neon-dot"></span>
+          <span class="title-text">About Me</span>
+          <span class="title-line-decoration"></span>
+        </h2>
         <div class="about-grid">
           <div class="about-text">
             <p>
-              I am a <strong>UI/UX designer</strong> and
-              <strong>ICT undergraduate</strong> pursuing
-              <strong
-                >BICT Hons at South Eastern University of Sri Lanka</strong
-              >
-              (graduating 2027). Passionate about creating user centered designs
-              and AI integrated solutions that make a difference.
-            </p>
-            <p>
-              With a unique background in both design and development, I bridge
-              the gap between aesthetics and functionality, delivering seamless
-              digital experiences that are both beautiful and intelligent.
+              <strong> UI/UX Designer</strong> and
+              <strong> Product Designer</strong> specializing in product design,
+              user research, interaction design, and UX strategy for mobile and
+              web applications, focused on building scalable, intuitive, and
+              intelligent digital experiences. Strong in translating complex
+              systems into clear, usable, and high-performing interfaces aligned
+              with AI-driven product standards, leveraging user research
+              insights and AI tools to improve design decisions, streamline
+              workflows, and enhance creativity in product development.
             </p>
             <div class="about-cv-btn">
-              <a href="Archchana%20CV.pdf" download class="btn-cv"
-                ><i class="fas fa-download"></i> Download CV</a
-              >
+              <a href="Archchana%20CV.pdf" download class="btn-cv">
+                <i class="fas fa-download"></i>
+                <span>Download CV</span>
+              </a>
             </div>
           </div>
           <div class="about-card">
-            <i class="fas fa-brain"></i>
+            <div class="card-icon-wrapper">
+              <i class="fas fa-brain"></i>
+              <div class="icon-pulse"></div>
+            </div>
             <h3>Design Philosophy</h3>
             <p>
               Creating meaningful experiences through empathy, research, and
@@ -114,54 +176,43 @@
     <section id="skills" class="skills">
       <div class="container">
         <h2 class="section-title">
-          <span class="neon-dot"></span> Skills & Expertise
+          <span class="neon-dot"></span>
+          <span class="title-text">Skills & Expertise</span>
+          <span class="title-line-decoration"></span>
         </h2>
-        <div class="skills-grid">
-          <div class="skill-category">
-            <h3><i class="fas fa-paintbrush"></i> UI/UX Design</h3>
-            <ul>
-              <li>UI designing</li>
-              <li>Wireframing</li>
-              <li>Prototyping</li>
-              <li>UX Research</li>
-              <li>Design Systems</li>
-              <li>Usability Testing</li>
-              <li>Creativity</li>
-            </ul>
+
+        <div class="skills-container">
+          <!-- Sidebar Navigation Tabs -->
+          <div class="skills-nav">
+            <button class="skills-tab active" data-category="design">
+              <i class="fas fa-paintbrush"></i>
+              <span>UI/UX Design</span>
+              <div class="tab-indicator"></div>
+            </button>
+            <button class="skills-tab" data-category="tools">
+              <i class="fas fa-tools"></i>
+              <span>Design Tools</span>
+              <div class="tab-indicator"></div>
+            </button>
+            <button class="skills-tab" data-category="dev">
+              <i class="fas fa-code"></i>
+              <span>Development</span>
+              <div class="tab-indicator"></div>
+            </button>
+            <button class="skills-tab" data-category="soft">
+              <i class="fas fa-users"></i>
+              <span>Soft Skills</span>
+              <div class="tab-indicator"></div>
+            </button>
           </div>
-          <div class="skill-category">
-            <h3><i class="fas fa-tools"></i> Tools</h3>
-            <ul>
-              <li>Figma</li>
-              <li>Adobe Illustrator</li>
-              <li>Photoshop</li>
-              <li>Canva</li>
-              <li>Adobe XD</li>
-              <li>Sketch</li>
-              <li>Blender</li>
-            </ul>
-          </div>
-          <div class="skill-category">
-            <h3><i class="fas fa-code"></i> Development</h3>
-            <ul>
-              <li>React</li>
-              <li>Flutter</li>
-              <li>Android Studio</li>
-              <li>HTML, CSS, JS</li>
-              <li>Supabase</li>
-            </ul>
-          </div>
-          <div class="skill-category">
-            <h3><i class="fas fa-users"></i> Soft Skills</h3>
-            <ul>
-              <li>Leadership</li>
-              <li>Communication</li>
-              <li>Problem Solving</li>
-              <li>Multitasking</li>
-              <li>Team Collaboration</li>
-              <li>Adaptability</li>
-              <li>Critical Thinking</li>
-            </ul>
+
+          <!-- Interactive Physics Viewport -->
+          <div class="skills-viewport">
+            <div class="skills-instruction">
+              <i class="fas fa-hand-pointer"></i> Hover and move mouse to push
+              skills
+            </div>
+            <div id="skills-floating-container"></div>
           </div>
         </div>
       </div>
@@ -171,35 +222,45 @@
     <section id="experience" class="experience">
       <div class="container">
         <h2 class="section-title">
-          <span class="neon-dot"></span> Work Experience
+          <span class="neon-dot"></span>
+          <span class="title-text">Work Experience</span>
+          <span class="title-line-decoration"></span>
         </h2>
-        <div class="timeline">
-          <div class="timeline-content">
-            <h3>Graphic Designing</h3>
-            <h4>Freelance</h4>
-            <p class="timeline-date">June 2024 – Present</p>
-            <p>
-              Designing user-friendly interfaces and improving user experience
-              for enterprise applications.
-            </p>
+
+        <div class="experience-container">
+          <!-- Sidebar Navigation -->
+          <div class="experience-sidebar">
+            <button class="exp-tab active" data-company="bitwave">
+              <span class="exp-tab-role">Junior UI/UX Designer</span>
+              <span class="exp-tab-comp">BITWAVE (PVT) LTD</span>
+              <div class="tab-indicator"></div>
+            </button>
+            <button class="exp-tab" data-company="vtn">
+              <span class="exp-tab-role">UI/UX Design Intern</span>
+              <span class="exp-tab-comp">VTN Multi Services</span>
+              <div class="tab-indicator"></div>
+            </button>
+            <button class="exp-tab" data-company="freelance">
+              <span class="exp-tab-role">Graphic Designer</span>
+              <span class="exp-tab-comp">Freelance</span>
+              <div class="tab-indicator"></div>
+            </button>
           </div>
-          <div class="timeline-content">
-            <h3>UI/UX Design Intern</h3>
-            <h4>VTN Multi Services (PVT) LTD</h4>
-            <p class="timeline-date">Dec 2025 – Present</p>
-            <p>
-              Designing user-friendly interfaces and improving user experience
-              for enterprise applications.
-            </p>
-          </div>
-          <div class="timeline-content">
-            <h3>Junior UI/UX Designer</h3>
-            <h4>BITWAVE (PVT) LTD - Remote</h4>
-            <p class="timeline-date">May 2026 – Present</p>
-            <p>
-              Designing modern, user centered interfaces for web and mobile
-              applications.
-            </p>
+
+          <!-- Workspace Panel -->
+          <div class="experience-panel">
+            <div class="exp-panel-header">
+              <div class="exp-panel-dots">
+                <span class="dot-red"></span>
+                <span class="dot-yellow"></span>
+                <span class="dot-green"></span>
+              </div>
+              <div class="exp-panel-title">workstation.log</div>
+              <div class="exp-panel-clock" id="exp-panel-clock">12:00 AM</div>
+            </div>
+            <div class="exp-panel-body" id="exp-panel-body">
+              <!-- Populated dynamically via script.js -->
+            </div>
           </div>
         </div>
       </div>
@@ -209,14 +270,16 @@
     <section id="projects" class="projects">
       <div class="container">
         <h2 class="section-title">
-          <span class="neon-dot"></span> Featured Projects
+          <span class="neon-dot"></span>
+          <span class="title-text">Featured Projects</span>
+          <span class="title-line-decoration"></span>
         </h2>
         <div class="projects-grid">
           <div class="project-card">
             <div
               class="project-image"
               style="
-                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                background-image: url(&quot;projects/Alerta Home page.png&quot;);
               "
             >
               <i class="fas fa-bell"></i>
@@ -225,15 +288,15 @@
             <p>
               Disaster management app with real-time alerts and SOS features.
             </p>
-            <a href="project.html?id=alerta" class="project-view-btn"
-              ><i class="fas fa-eye"></i> View Project</a
-            >
+            <a href="project.html?id=alerta" class="project-view-btn">
+              <i class="fas fa-eye"></i> View
+            </a>
           </div>
           <div class="project-card">
             <div
               class="project-image"
               style="
-                background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+                background-image: url(&quot;projects/ecotrack-main.jpg&quot;);
               "
             >
               <i class="fas fa-leaf"></i>
@@ -243,15 +306,15 @@
               Sustainability tracking app for households to monitor energy and
               waste usage.
             </p>
-            <a href="project.html?id=ecotrack" class="project-view-btn"
-              ><i class="fas fa-eye"></i> View Project</a
-            >
+            <a href="project.html?id=ecotrack" class="project-view-btn">
+              <i class="fas fa-eye"></i> View
+            </a>
           </div>
           <div class="project-card">
             <div
               class="project-image"
               style="
-                background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+                background-image: url(&quot;projects/smart-campus-main.jpg&quot;);
               "
             >
               <i class="fas fa-university"></i>
@@ -260,16 +323,14 @@
             <p>
               Student navigation and services platform for university campuses.
             </p>
-            <a href="project.html?id=smart-campus" class="project-view-btn"
-              ><i class="fas fa-eye"></i> View Project</a
-            >
+            <a href="project.html?id=smart-campus" class="project-view-btn">
+              <i class="fas fa-eye"></i> View
+            </a>
           </div>
           <div class="project-card">
             <div
               class="project-image"
-              style="
-                background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
-              "
+              style="background-image: url(&quot;projects/auro-main.jpg&quot;)"
             >
               <i class="fas fa-heart"></i>
             </div>
@@ -278,9 +339,9 @@
               Digital guidance platform for career mentorship and skill
               development.
             </p>
-            <a href="project.html?id=auro-app" class="project-view-btn"
-              ><i class="fas fa-eye"></i> View Project</a
-            >
+            <a href="project.html?id=auro-app" class="project-view-btn">
+              <i class="fas fa-eye"></i> View
+            </a>
           </div>
         </div>
       </div>
@@ -289,33 +350,139 @@
     <!-- Services Section -->
     <section id="services" class="services">
       <div class="container">
-        <h2 class="section-title"><span class="neon-dot"></span> Services</h2>
-        <div class="services-grid">
-          <div class="service-card">
-            <i class="fas fa-mobile-alt"></i>
-            <h3>UI/UX Design for Mobile Apps</h3>
-          </div>
-          <div class="service-card">
-            <i class="fas fa-laptop-code"></i>
-            <h3>Website Design</h3>
-          </div>
-          <div class="service-card">
-            <i class="fas fa-cube"></i>
-            <h3>Prototyping</h3>
-          </div>
-          <div class="service-card">
-            <i class="fas fa-search"></i>
-            <h3>UX Research</h3>
-          </div>
-          <div class="service-card">
-            <i class="fas fa-layer-group"></i>
-            <h3>Design Systems</h3>
-          </div>
-          <div class="service-card">
-            <i class="fas fa-pen-fancy"></i>
-            <h3>Freelance Design</h3>
+        <h2 class="section-title">
+          <span class="neon-dot"></span>
+          <span class="title-text">Services</span>
+          <span class="title-line-decoration"></span>
+        </h2>
+      </div>
+
+      <div class="services-marquee-wrapper">
+        
+        <!-- Row 1: Moves Left (Services 1, 2, 3) -->
+        <div class="marquee-row marquee-left">
+          <div class="marquee-track">
+            <!-- Card 1 -->
+            <div class="service-card">
+              <i class="fas fa-mobile-alt"></i>
+              <div class="service-card-info">
+                <h3>UI/UX Design</h3>
+                <p>Crafting intuitive user interfaces for mobile platforms with premium aesthetics.</p>
+              </div>
+              <div class="service-glow"></div>
+            </div>
+            <!-- Card 2 -->
+            <div class="service-card">
+              <i class="fas fa-laptop-code"></i>
+              <div class="service-card-info">
+                <h3>Website Design</h3>
+                <p>Designing responsive websites with modern layout grids and smooth interactions.</p>
+              </div>
+              <div class="service-glow"></div>
+            </div>
+            <!-- Card 3 -->
+            <div class="service-card">
+              <i class="fas fa-cube"></i>
+              <div class="service-card-info">
+                <h3>Prototyping</h3>
+                <p>Developing interactive prototypes to validate flows, animations, and transitions.</p>
+              </div>
+              <div class="service-glow"></div>
+            </div>
+            
+            <!-- Duplicates for seamless loop -->
+            <!-- Card 1 Duplicate -->
+            <div class="service-card">
+              <i class="fas fa-mobile-alt"></i>
+              <div class="service-card-info">
+                <h3>UI/UX Design</h3>
+                <p>Crafting intuitive user interfaces for mobile platforms with premium aesthetics.</p>
+              </div>
+              <div class="service-glow"></div>
+            </div>
+            <!-- Card 2 Duplicate -->
+            <div class="service-card">
+              <i class="fas fa-laptop-code"></i>
+              <div class="service-card-info">
+                <h3>Website Design</h3>
+                <p>Designing responsive websites with modern layout grids and smooth interactions.</p>
+              </div>
+              <div class="service-glow"></div>
+            </div>
+            <!-- Card 3 Duplicate -->
+            <div class="service-card">
+              <i class="fas fa-cube"></i>
+              <div class="service-card-info">
+                <h3>Prototyping</h3>
+                <p>Developing interactive prototypes to validate flows, animations, and transitions.</p>
+              </div>
+              <div class="service-glow"></div>
+            </div>
           </div>
         </div>
+
+        <!-- Row 2: Moves Right (Services 4, 5, 6) -->
+        <div class="marquee-row marquee-right">
+          <div class="marquee-track">
+            <!-- Card 4 -->
+            <div class="service-card">
+              <i class="fas fa-search"></i>
+              <div class="service-card-info">
+                <h3>UX Research</h3>
+                <p>Conducting user testing and interviews to back designs with insights.</p>
+              </div>
+              <div class="service-glow"></div>
+            </div>
+            <!-- Card 5 -->
+            <div class="service-card">
+              <i class="fas fa-layer-group"></i>
+              <div class="service-card-info">
+                <h3>Design Systems</h3>
+                <p>Building scalable token architectures and reusable component libraries.</p>
+              </div>
+              <div class="service-glow"></div>
+            </div>
+            <!-- Card 6 -->
+            <div class="service-card">
+              <i class="fas fa-pen-fancy"></i>
+              <div class="service-card-info">
+                <h3>Freelance Design</h3>
+                <p>Custom creative consultations and end-to-end design implementations.</p>
+              </div>
+              <div class="service-glow"></div>
+            </div>
+            
+            <!-- Duplicates for seamless loop -->
+            <!-- Card 4 Duplicate -->
+            <div class="service-card">
+              <i class="fas fa-search"></i>
+              <div class="service-card-info">
+                <h3>UX Research</h3>
+                <p>Conducting user testing and interviews to back designs with insights.</p>
+              </div>
+              <div class="service-glow"></div>
+            </div>
+            <!-- Card 5 Duplicate -->
+            <div class="service-card">
+              <i class="fas fa-layer-group"></i>
+              <div class="service-card-info">
+                <h3>Design Systems</h3>
+                <p>Building scalable token architectures and reusable component libraries.</p>
+              </div>
+              <div class="service-glow"></div>
+            </div>
+            <!-- Card 6 Duplicate -->
+            <div class="service-card">
+              <i class="fas fa-pen-fancy"></i>
+              <div class="service-card-info">
+                <h3>Freelance Design</h3>
+                <p>Custom creative consultations and end-to-end design implementations.</p>
+              </div>
+              <div class="service-glow"></div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </section>
 
@@ -323,7 +490,9 @@
     <section id="certifications" class="certifications">
       <div class="container">
         <h2 class="section-title">
-          <span class="neon-dot"></span> Certifications
+          <span class="neon-dot"></span>
+          <span class="title-text">Certifications</span>
+          <span class="title-line-decoration"></span>
         </h2>
         <div class="certs-grid">
           <div class="cert-card">
@@ -333,7 +502,6 @@
               ><button
                 class="cert-view-btn"
                 data-cert="certificates/google-ux-cert.jpg"
-                data-title="Google UX Design Certification"
               >
                 <i class="fas fa-eye"></i> View
               </button>
@@ -346,7 +514,6 @@
               ><button
                 class="cert-view-btn"
                 data-cert="certificates/google-foundations.jpg"
-                data-title="Foundations of UX Design – Google"
               >
                 <i class="fas fa-eye"></i> View
               </button>
@@ -359,7 +526,6 @@
               ><button
                 class="cert-view-btn"
                 data-cert="certificates/google-figma.jpg"
-                data-title="High-Fidelity Design in Figma"
               >
                 <i class="fas fa-eye"></i> View
               </button>
@@ -372,7 +538,6 @@
               ><button
                 class="cert-view-btn"
                 data-cert="certificates/aws-ai.jpg"
-                data-title="AWS Generative AI Foundations"
               >
                 <i class="fas fa-eye"></i> View
               </button>
@@ -384,14 +549,7 @@
               <span>Digital Skills: User Experience – Accenture</span
               ><button
                 class="cert-view-btn"
-                onclick="
-                  window.open(
-                    'https://www.futurelearn.com/certificates/6q0sbx9',
-                    '_blank',
-                  )
-                "
                 data-cert="certificates/accenture-ux.jpg"
-                data-title="Accenture UX"
               >
                 <i class="fas fa-eye"></i> View
               </button>
@@ -404,7 +562,6 @@
               ><button
                 class="cert-view-btn"
                 data-cert="certificates/graphic-design.jpg"
-                data-title="Graphic Design – Marazin Academy"
               >
                 <i class="fas fa-eye"></i> View
               </button>
@@ -417,100 +574,102 @@
     <!-- Modal -->
     <div id="certModal" class="cert-modal">
       <div class="cert-modal-content">
-        <span class="cert-modal-close">&times;</span
-        ><img id="certModalImage" src="" alt="Certificate" />
+        <span class="cert-modal-close">&times;</span>
+        <img id="certModalImage" src="" alt="Certificate" />
         <div class="cert-modal-caption"></div>
       </div>
     </div>
 
+
     <!-- Achievements Section -->
-    <section id="achievements" class="achievements">
-      <div class="container">
-        <h2 class="section-title">
-          <span class="neon-dot"></span> Achievements
-        </h2>
-        <div class="achievements-grid">
-          <div class="achievement-card">
-            <i class="fas fa-crown"></i>
-            <div class="achievement-info">
-              <h3>🏆 1st Place Winner</h3>
-              <p>SEUSL Designathon 2026</p>
-            </div>
-            <a
-              href="achievement.html?id=seusl-designathon"
-              class="achievement-view-btn"
-              ><i class="fas fa-eye"></i> View</a
-            >
-          </div>
-          <div class="achievement-card">
-            <i class="fas fa-trophy"></i>
-            <div class="achievement-info">
-              <h3>Top 10</h3>
-              <p>SLIIT Designathon</p>
-            </div>
-            <a
-              href="achievement.html?id=sliit-designathon"
-              class="achievement-view-btn"
-              ><i class="fas fa-eye"></i> View</a
-            >
-          </div>
-          <div class="achievement-card">
-            <i class="fas fa-laptop-code"></i>
-            <div class="achievement-info">
-              <h3>Figma Workshop - Designathon 2026</h3>
-              <p>Conducted UI/UX workshop for SEUSL participants</p>
-            </div>
-            <a
-              href="achievement.html?id=figma-workshop"
-              class="achievement-view-btn"
-              ><i class="fas fa-eye"></i> View</a
-            >
-          </div>
-          <div class="achievement-card">
-            <i class="fas fa-microchip"></i>
-            <div class="achievement-info">
-              <h3>Participant</h3>
-              <p>SAHASAK NIMAVUM - 2024 National Inventions Exhibition</p>
-            </div>
-            <a
-              href="achievement.html?id=sahasak-nimavum"
-              class="achievement-view-btn"
-              ><i class="fas fa-eye"></i> View</a
-            >
-          </div>
-          <div class="achievement-card">
-            <i class="fas fa-microphone-alt"></i>
-            <div class="achievement-info">
-              <h3>🥉 3rd Place - Province Level</h3>
-              <p>English Day Oratory Competition | School Representation</p>
-            </div>
-            <a
-              href="achievement.html?id=english-oratory"
-              class="achievement-view-btn"
-              ><i class="fas fa-eye"></i> View</a
-            >
-          </div>
-          <div class="achievement-card">
-            <i class="fas fa-award"></i>
-            <div class="achievement-info">
-              <h3>🏆 Top 10 Selected - SLASSCOM</h3>
-              <p>Hack Like a Girl 3.0 | Women in Tech Hackathon</p>
-            </div>
-            <a
-              href="achievement.html?id=hack-like-girl"
-              class="achievement-view-btn"
-            >
-              <i class="fas fa-eye"></i> View
-            </a>
-          </div>
+<section id="achievements" class="achievements">
+  <div class="container">
+    <h2 class="section-title">
+      <span class="neon-dot"></span>
+      <span class="title-text">Achievements</span>
+      <span class="title-line-decoration"></span>
+    </h2>
+
+    <div class="achievements-grid">
+
+      <div class="achievement-card">
+        <i class="fas fa-crown"></i>
+        <div class="achievement-info">
+          <h3>🏆 1st Place Winner</h3>
+          <p>SEUSL Designathon 2026</p>
         </div>
+        <a href="achievement.html?id=seusl-designathon" class="achievement-view-btn">
+          <i class="fas fa-eye"></i> View
+        </a>
       </div>
-    </section>
+
+      <div class="achievement-card">
+        <i class="fas fa-trophy"></i>
+        <div class="achievement-info">
+          <h3>Top 10</h3>
+          <p>SLIIT Designathon</p>
+        </div>
+        <a href="achievement.html?id=sliit-designathon" class="achievement-view-btn">
+          <i class="fas fa-eye"></i> View
+        </a>
+      </div>
+
+      <div class="achievement-card">
+        <i class="fas fa-laptop-code"></i>
+        <div class="achievement-info">
+          <h3>Figma Workshop - Designathon 2026</h3>
+          <p>Conducted UI/UX workshop for SEUSL participants</p>
+        </div>
+        <a href="achievement.html?id=figma-workshop" class="achievement-view-btn">
+          <i class="fas fa-eye"></i> View
+        </a>
+      </div>
+
+      <div class="achievement-card">
+        <i class="fas fa-microchip"></i>
+        <div class="achievement-info">
+          <h3>Participant</h3>
+          <p>SAHASAK NIMAVUM - 2024 National Inventions Exhibition</p>
+        </div>
+        <a href="achievement.html?id=sahasak-nimavum" class="achievement-view-btn">
+          <i class="fas fa-eye"></i> View
+        </a>
+      </div>
+
+      <div class="achievement-card">
+        <i class="fas fa-microphone-alt"></i>
+        <div class="achievement-info">
+          <h3>Top 10 - Province Level</h3>
+          <p>English Day Oratory Competition | School Representation</p>
+        </div>
+        <a href="achievement.html?id=english-oratory" class="achievement-view-btn">
+          <i class="fas fa-eye"></i> View
+        </a>
+      </div>
+
+      <div class="achievement-card">
+        <i class="fas fa-award"></i>
+        <div class="achievement-info">
+          <h3>Top 10 - SLASSCOM</h3>
+          <p>Hack Like a Girl 3.0 (Top 25 → Top 10)</p>
+        </div>
+        <a href="achievement.html?id=hack-like-girl" class="achievement-view-btn">
+          <i class="fas fa-eye"></i> View
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
 
     <!-- Contact Section -->
     <section id="contact" class="contact">
       <div class="container">
-        <h2 class="section-title"><span class="neon-dot"></span> Hire Me</h2>
+        <h2 class="section-title">
+          <span class="neon-dot"></span>
+          <span class="title-text">Hire Me</span>
+          <span class="title-line-decoration"></span>
+        </h2>
         <div class="contact-grid">
           <div class="contact-info">
             <h3>I'm Available for Work! 🚀</h3>
@@ -519,8 +678,8 @@
               seeking opportunities in:
             </p>
             <div class="job-opportunities">
-              <span class="job-tag">🎨 UI/UX Design - Full time</span
-              ><span class="job-tag">🌍 On-site / Remote</span>
+              <span class="job-tag">🎨 UI/UX Design - Full time</span>
+              <span class="job-tag">🌍 On-site / Remote</span>
             </div>
             <div class="contact-details">
               <div class="contact-item">
@@ -605,6 +764,11 @@
         <p>© 2026 Archchana Vijayanathan | AI Driven UI/UX Designer</p>
       </div>
     </footer>
-    <script src="script.js"></script>
+
+    <!-- Three.js, GSAP, and Lenis -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://unpkg.com/lenis@1.1.9/dist/lenis.min.js"></script>
+    <script src="script.js?v=18"></script>
   </body>
 </html>
